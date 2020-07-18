@@ -9,9 +9,6 @@ from Functions import *
 
 start_time = time.time()
 
-# DEXUSEU = Exchange Rate
-# LFWA64TTUSM647S = working age population
-
 # Set the start date
 start = date(1950,1,1)
 
@@ -40,15 +37,12 @@ _ = plt.ylabel('CDF')
 _ = plt.margins(0.2)
 plt.show()
 
-_ = plt.plot(econ_data['Unemployment Rate'],econ_data['Participation Rate'], marker='.', linestyle='none',)
+_ = plt.plot(econ_data['Unemployment Rate'],econ_data['Participation Rate'], marker='.', linestyle='none')
 _ = plt.xlabel('Participation Rate')
 _ = plt.ylabel('Participation Rate')
 _ = plt.margins(0.2)
-
 plt.show()
 print(np.corrcoef(econ_data['Unemployment Rate'],econ_data['Participation Rate']))
-
-econ_data['decade'] = econ_data['']
 
 _ = sns.scatterplot(x='DATE',y='Participation Rate',data=econ_data,hue='decade',size='Unemployment Rate',size_norm=(2,15))
 _ = plt.xlabel('Date')
