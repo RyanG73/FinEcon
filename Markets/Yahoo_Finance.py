@@ -13,14 +13,30 @@ from datetime import date
 import matplotlib.pyplot as plt
 start_time = time.time()
 
-start = date(2016,5,15)
+start = date(2020,1,1)
 end = date.today()
-ticker = 'HBAN'
+ticker = 'PENN'
 data_source = 'yahoo'
-stock_data = DataReader(ticker,data_source,start,end)
+penn = DataReader(ticker,data_source,start,end)
+penn = penn.reset_index()
+penn['Symbol'] = 'PENN'
+
+ticker = 'MGM'
+data_source = 'yahoo'
+mgm = DataReader(ticker,data_source,start,end)
+mgm = mgm.reset_index()
+mgm['Symbol'] = 'MGM'
+
+ticker = 'WYNN'
+data_source = 'yahoo'
+wynn = DataReader(ticker,data_source,start,end)
+wynn = wynn.reset_index()
+wynn['Symbol'] = 'WYNN'
+
+combined = penn.append(mgm).append(wynn)
 
 
-sns.lineplot(x=stock_data.index, y="Close",data=stock_data)
+sns.lineplot(x="Date", y="Volume",data=combined,hue="Symbol"); plt.show()
 #sns.barplot(x=stock_data.index, y="Volume",data=stock_data)
 plt.show()
 
